@@ -12,7 +12,9 @@ const consultant = new Schema({
   phone: { type: String },
   status: { type: Boolean, default: false },
   days: { type: String, required: true },
-  timing: { type: String, required: true },
+  days1: { type: String },
+  days2: { type: String },
+  timing: { type: String },
   timing1: { type: String },
   timing2: { type: String },
   createdOn: { type: String },
@@ -22,6 +24,9 @@ const consultant = new Schema({
   roomNo: { type: String },
   onLeave: { type: Boolean, default: false },
   remarks: { type: String },
+  appointmentFee: { type: String },
+  welfareFee: { type: String },
+  consultantShare: { type: String },
 });
 
 export const ConsultantsModel = mongoose.model("Consultant New", consultant);
