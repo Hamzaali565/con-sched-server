@@ -6,7 +6,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: ["http://localhost:3000", "https://ipd-model.vercel.app"],
+    origin: ["http://localhost:3000", "https://cons-sched.vercel.app"],
     credentials: true,
   })
 );
