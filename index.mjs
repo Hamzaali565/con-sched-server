@@ -2,6 +2,7 @@ import * as dotenv from "dotenv";
 import mongoose from "mongoose";
 import connectDB from "./src/db/database.mjs";
 import { app } from "./src/app.mjs";
+import { uploadImageMiddleware } from "./src/middlewares/multer.middleware.mjs";
 
 mongoose.set("strictQuery", false);
 

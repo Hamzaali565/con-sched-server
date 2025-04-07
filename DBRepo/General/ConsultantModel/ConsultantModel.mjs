@@ -1,5 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 import { getCreatedOn } from "../../../src/constants.mjs";
+import { stringify } from "uuid";
 
 const consultant = new Schema({
   name: { type: String, required: true },
@@ -24,9 +25,16 @@ const consultant = new Schema({
   roomNo: { type: String },
   onLeave: { type: Boolean, default: false },
   remarks: { type: String },
-  appointmentFee: { type: String },
+  appointmentFee: { type: Number },
   welfareFee: { type: String },
   consultantShare: { type: String },
+  leaveDate: { type: String },
+  cProfile: { type: String },
+  specialityImage: { type: String },
+  specificType: { type: Boolean, default: false },
+  specificCharges: { type: Number, default: 0 },
+  specificRoom: { type: String },
+  specificDay: { type: String },
 });
 
 export const ConsultantsModel = mongoose.model("Consultant New", consultant);
