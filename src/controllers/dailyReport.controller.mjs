@@ -59,10 +59,22 @@ const delete_dail_report = asyncHandler(async (req, res) => {
 
 const get_all_reports = asyncHandler(async (req, res) => {
   try {
-    const response = await dailyReportModel.find(
-      { is_deleted: false },
-      "title"
-    );
+    const { fromDate, toDate } = req.query;
+
+    if (!fromDate || !toDate) {
+      res.status(404).json({ message: "Both Dates Are Required !!!" });
+      return;
+    }
+    const from = new Date(fromDate);
+    const to = new Date(toDate);
+
+    // Adjust toDate to include the entire day
+    to.setHours(23, 59, 59, 999);
+    console.log(from, to);
+    const response = await dailyReportModel.find({
+      is_deleted: false,
+      createdAt: { $gte: from, $lte: to },
+    });
     if (response.length === 0) throw new ApiError(404, "No data found");
     res.status(200).json(new ApiResponse(200, { data: response }));
   } catch (error) {
